@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <style>
+    body {
+  margin: 0;
+  font-size: 10px;
+  color: white;
+}
+div {
+  white-space: nowrap;
+  position: relative;
+  display: inline-block;
+  left: 5px;
+  text-align: justify;
+  background-color: rgba(60,60,60,1);
+}
+.a {
+  white-space: nowrap;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgba(60,60,60,1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.a li {
+  position: relative;
+  text-align: justify;
+  border-bottom: 1px solid white;
+}
+div:hover  .a {
+  display: block;
+}
+.c:hover  ul {
+  display: block;
+}
+.b {
+  white-space: nowrap;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: rgba(60,60,60,1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  position: relative;
+  text-align: justify;
+  border-bottom: 1px solid white;
+}
+  </style>
+  <div>文件(F)
+    <ul class="a">
+      <li>新建文本文件  Ctal+N</li>
+      <li>新建文件.... Ctal+Alt+Windows+N</li>
+      <li class="c">新建窗口
+        <ul class="b">
+        <li>新建文本文件</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
