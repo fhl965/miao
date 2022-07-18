@@ -5,70 +5,127 @@
   <meta name="viewport" content="width=device-width">
   <title>JS Bin</title>
 </head>
-<body>
+<body> 
   <style>
-    body {
-  margin: 0;
-  font-size: 10px;
-  color: white;
-}
-div {
-  white-space: nowrap;
-  position: relative;
-  display: inline-block;
-  left: 5px;
-  text-align: justify;
-  background-color: rgba(60,60,60,1);
-}
-.a {
-  white-space: nowrap;
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: rgba(60,60,60,1);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.a li {
-  position: relative;
-  text-align: justify;
-  border-bottom: 1px solid white;
-}
-div:hover  .a {
-  display: block;
-}
-.c:hover  ul {
-  display: block;
-}
-.b {
-  white-space: nowrap;
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  background-color: rgba(60,60,60,1);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-li {
-  position: relative;
-  text-align: justify;
-  border-bottom: 1px solid white;
-}
+  body {
+    margin: 0;
+    padding:0;
+  }
+  main {
+    background-color: rgb(60,60,60);
+    color: #c4c4c4;;
+  }
+  div {
+    display: inline-block;
+    position: relative;
+    background-color: rgb(60,60,60);
+    box-shadow: 0 0 1px #333;
+    padding: 5px;
+    margin: 5px;
+  }
+  ul {
+    display: none;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+     top: 100%;
+     left: 10px;
+    background-color: rgb(60,60,60);
+    box-shadow: 0 0 1px #333;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  li:hover {
+    background-color: gold;
+  }
+  div:hover {
+    background-color: gold;
+  }
+  li {
+    position: relative;
+    white-space: nowrap;
+    padding: 5px;
+    
+  }
+  div:hover > ul {
+    display: block;
+    
+  }
+  li:empty {
+    border-bottom: 1px solid white;
+  }
+  div ul ul {
+    display: none;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    top: 0;
+    left: 100%;
+    border-radius: 2px;
+  }
+  li:hover > ul {
+    display: block;
+  }
+  ul li {
+    padding: 0 100px 0 5px;
+  }
+  ul li > span {
+    position: absolute;
+    right: 10px;
+    top: 0;
+  }
   </style>
-  <div>文件(F)
-    <ul class="a">
-      <li>新建文本文件  Ctal+N</li>
-      <li>新建文件.... Ctal+Alt+Windows+N</li>
-      <li class="c">新建窗口
-        <ul class="b">
-        <li>新建文本文件</li>
+  <main>
+   <div>文件
+    <ul>
+      <li>打开 <span>Ctrl+O</span></li>
+      <li>保存</li>
+      <li>另存为
+        <ul>
+          <li>打开</li>
+          <li>保存</li>
+          <li>另存为
+            <ul>
+             <li>打开</li>
+             <li>保存</li>
+             <li>另存为</li>
+             <li>新建</li>
+            </ul>
+          </li>
+          <li></li>
+          <li>新建</li>
         </ul>
       </li>
+      <li></li>
+      <li>新建</li>
     </ul>
-  </div>
+   </div>
+    <div>编辑<ul>
+      <li>打开</li>
+      <li>保存</li>
+      <li>另存为
+        <ul>
+          <li>打开</li>
+          <li>保存</li>
+          <li>另存为
+            <ul>
+             <li>打开</li>
+             <li>保存</li>
+             <li>另存为</li>
+             <li>新建</li>
+            </ul>
+          </li>
+          <li></li>
+          <li>新建</li>
+        </ul>
+      </li>
+      <li></li>
+      <li>新建</li>
+    </ul></div>
+    <div>选择</div>
+    <div>查看</div>
+ </main>
 </body>
 </html>
