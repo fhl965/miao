@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+    <style>
+        input {
+  display: none;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+div {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  height: 40px;
+  width: 80px;
+  border: 1px solid grey;
+  border-radius:50px; 
+  font-size: 0;
+  transition: 0.5s linear;
+  
+}
+label {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  display: inline-block;
+  border: 1px solid none;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  left: 5px;
+  top: 4px;
+  transition: 0.5s linear;
+  box-shadow: 0 0 5px black;
+  background-color: white;
+}
+input:checked ~ div label {
+  transition: 0.5s linear;
+  left: 42px;
+} 
+input:checked ~ div {
+  background-color: rgb(48,243,73);
+  transition: 0.5s linear;
+  border-color: rgb(48,243,73);
+}
+    </style>
+  <input type="checkbox" id="apple">
+  <div>
+    <label for="apple" class="a"></label>
+  </div>
+</body>
+</html>
