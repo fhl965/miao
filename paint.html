@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>画图</title>
+  <style>
+    canvas {
+      border: 2px solid #f0f;
+      display: block;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <canvas width="500" height="400"></canvas>
+</body>
+<script>
+  var canvas = document.querySelector('canvas')
+  canvas.style.imageRendering = 'pixelated' //放大时的插帧方式：不插帧，直接放大像素
+  var ctx = canvas.getContext('2d')
+
+  function dot(x, y, color = 'black') {
+    x = Math.round(x)
+    y = Math.round(y)
+    ctx.fillStyle = color
+    ctx.fillRect(x, y, 1, 1)
+  }
+  /**
+   * YOUR TASK
+      * 在 坐标 (42, 42) 画出一个点
+      * 画一条实线
+      * 画一条一个实点一个空点的虚线
+      * 画一条两个实点两个空点的虚线
+      * 画一条三个实点两个空点的虚线
+      * 画一条45度的斜线
+      * 画一条30度的斜线（与x轴或y轴的夹角呈30度）
+      * 画一条跨越画布左上角和右下角的对角线
+      * 画一个空心矩形
+      * 画一个实心矩形
+      * 画两个个空心的圆，居中：
+        * 一个半径为50像素
+        * 一个半径为200像素
+      * 画一个实心的圆，半径至少为100像素
+      * 画一个【大小合适】的sin(x)的图像
+
+      * 画出rgb色彩空间的某一面（尺寸要大于100x100）
+         'rgb(255,255,0)'
+         '#ff00ff'
+        如果做出上一题后，尝试将其每个点的坐标乘以一个矩阵（如(2,0,0,2)或(1,0.27得到新的位置，即绘制出被线性变幻后的色彩空间某一面
+        可以考虑如下几种矩阵：
+           2 0
+           0 2
+           ------
+           1  0.27
+           0  1
+           ------
+           0.5    0.87
+           -0.87  0.5
+
+   */
+</script>
+<script>
+dot(42,42,'red')
+</script>
+
+<script>
+  var y = 10
+  for (var x = 1;x < 500;x++) {
+    dot(x,y,'black')
+  }
+</script>
+
+<script>
+ var y = 20
+ var judge = true
+  for (var i = 1;i < 500;i++) {
+    var judge = !judge
+    if (judge) {
+      dot(i,y,'black')
+    }
+
+  }
+</script>
+
+<script>
+var y = 30
+  for (var x = 1;x < 500;x++) {
+    if (x % 4 == 1 || x % 4 == 2) {
+      dot(x,y,'black')
+    }
+  }
+</script>
+
+<script>
+  var y = 40
+for (var x = 1;x < 500;x++) {
+    if (x % 5 == 1 || x % 5 == 2 || x % 5 == 3 ) {
+      dot(x,y,'black')
+    }
+  }
+</script>
+
+<script>
+
+  for (var x = 1;x < 500;x++) {
+    var y = x
+    dot(x,y,'black')
+  }
+</script>
+
+<script>
+  for (var x = 1;x < 500;x++) {
+    var y = Math.sqrt(3) / 3 * x
+    dot(x,y,'black')
+  }
+</script>
+
+<script>
+  for (var x = 1;x < 500;x++) {
+    var y = 400 / 500 * x
+    dot(x,y,'black')
+  }
+</script>
+
+<script>
+  for (var x = 1;x < 500;x++) {
+    var y = -(400 / 500) * x + 400
+    dot(x,y,'black')
+  }
+</script>
+
+<script>
+  for (var y = 50;y <= 100;y++) {
+    for (var x = 50;x <= 100;x++) {
+      if (x == 50 || y == 50 || x == 100 || y == 100) {
+        dot(x,y,'black')
+      }
+    }
+  }
+</script>
+
+<script>
+  for (var y = 110;y <= 160;y++) {
+    for (var x = 110;x <= 160;x++) {
+        dot(x,y,'black')
+    }
+  }
+</script>
+
+<script>
+    for (var x = 200;x <= 300;x++) {
+      var s = 2500 - (x - 250) * (x - 250)
+      var y = Math.sqrt(s) + 200
+      var z = -Math.sqrt(s) + 200
+        dot(x,z,'red')
+        dot(x,y,'red')
+    }
+    for (var x = 150;x <= 250;x++) {
+      var s = 2500 - (x - 200) * (x - 200)
+      var y = Math.sqrt(s) + 250
+      var z = -Math.sqrt(s) + 250
+        dot(z,x,'red')
+        dot(y,x,'red')
+    }
+</script>
+
+<script>
+  for (var x = 50;x <= 450;x++) {
+      var s = 40000 - (x - 250) * (x - 250)
+      var y = Math.sqrt(s) + 200
+      var z = -Math.sqrt(s) + 200
+        dot(x,z,'red')
+        dot(x,y,'red')
+    }
+    for (var x = 0;x <= 400;x++) {
+      var s = 40000 - (x - 200) * (x - 200)
+      var y = Math.sqrt(s) + 250
+      var z = -Math.sqrt(s) + 250
+        dot(z,x,'red')
+        dot(y,x,'red')
+    }
+</script>
+
+<script>
+for (var i = 0;i <= 100;i++) {
+  for (var x = 100 - i;x <= 100 + i;x++) {
+      var s = i * i  - (x - 100) * (x - 100)
+      var y = Math.sqrt(s) + 200
+      var z = -Math.sqrt(s) + 200
+        dot(x,z,'red')
+        dot(x,y,'red')
+    }
+    for (var x = 200 - i;x <= 200 + i;x++) {
+      var s = i * i - (x - 200) * (x - 200)
+      var y = Math.sqrt(s) + 100
+      var z = -Math.sqrt(s) + 100
+        dot(z,x,'red')
+        dot(y,x,'red')
+    }
+}
+</script>
+
+<script>
+  for (var x = 1;x < 360;x++) {
+    var y = -(400 / 500) * x + 400
+    dot(x,y,'black')
+  }
+</script>
+
+/**
+
+   * 画一个实心的圆，半径至少为100像素
+   * 画一个【大小合适】的sin(x)的图像
+
+   * 画出rgb色彩空间的某一面（尺寸要大于100x100）
+      'rgb(255,255,0)'
+      '#ff00ff'
+     如果做出上一题后，尝试将其每个点的坐标乘以一个矩阵（如(2,0,0,2)或(1,0.27得到新的位置，即绘制出被线性变幻后的色彩空间某一面
+     可以考虑如下几种矩阵：
+        2 0
+        0 2
+        ------
+        1  0.27
+        0  1
+        ------
+        0.5    0.87
+        -0.87  0.5
+
+*/
+</html>
