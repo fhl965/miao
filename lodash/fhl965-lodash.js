@@ -27,11 +27,10 @@ var fhl965 = function() {
     return result
   }
 
-
-
-
-
-
+return {
+  chunk,
+  compact,
+}
 
 
 }()
