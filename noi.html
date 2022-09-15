@@ -7,6 +7,191 @@
   <title>Document</title>
 </head>
 <body>
+<script id="narcissistic">
+  var sxh = function(x) {
+     var s = 0
+     var k = x
+     var y = x
+     var i = 0
+     while (x > 1) {
+
+       i += 1
+       x = x / (10 ** (i - 1))
+     }
+     while (y > 0) {
+        a = y % 10
+        s = s + a ** i
+        y = (y - a) / 10
+
+     }
+     if (s == k) {
+       var result = 'YES'
+     } else {
+       var result = 'NO'
+     }
+     return result
+   }
+   var x = Number(prompt())
+   console.log(sxh(x))
+ </script>
+
+<script id="narcissistics">
+  var sxh = function(x) {
+     var s = 0
+     var k = x
+     var y = x
+     var i = 0
+     while (x > 1) {
+
+       i += 1
+       x = x / (10 ** (i - 1))
+     }
+     while (y > 0) {
+        a = y % 10
+        s = s + a ** i
+        y = (y - a) / 10
+
+     }
+     if (s == k) {
+       var result = 'YES'
+     } else {
+       var result = 'NO'
+     }
+     return result
+   }
+   for (var i = 2;i < 1000;i++) {
+    if (sxh(i) == 'YES') {
+      console.log(i)
+   }
+  }
+ </script>
+
+ <script id="palindrom">
+  function hws(x) {
+    var s = ''
+    var k = x
+    while(x > 0) {
+      a = x % 10
+      x = (x - a) / 10
+      s += a
+    }
+    if (s == k) {
+      return 'YES'
+    } else {
+      return 'NO'
+    }
+  }
+  var x = Number(prompt())
+  console.log(hws(x))
+ </script>
+
+
+ <script id="weekday">
+  debugger
+  function weekday(n,x) {
+    var days = 0
+    for (var i = 1;i < n;i++) {
+      if (i % 4 == 0) {
+        if (i % 100 == 0 && i % 400 !== 0) {
+          days += 365
+        } else {
+          days += 366
+        }
+      } else {
+        days += 365
+      }
+    }
+    for (var ii = 1;ii < x;ii++) {
+      if (ii == 1 || ii == 3 || ii == 5 || ii == 7 || ii == 8 || ii == 10 || ii == 12) {
+        days += 31
+      }
+      if (ii == 2 ) {
+        if (n % 4 == 0 ) {
+          if (n % 100 == 0 && n % 400 !== 0) {
+          days += 28
+          } else {
+          days += 29
+          }
+        } else {
+          days += 28
+        }
+      }
+      if (ii == 4 || ii == 6 || ii == 9 || ii == 11) {
+        days += 30
+      }
+
+    }
+      days++
+      if (days % 7 == 0) {
+        return 0
+      }
+      if (days % 7 == 1) {
+        return 1
+      }
+      if (days % 7 == 2) {
+        return 2
+      }
+      if (days % 7 == 3) {
+        return 3
+      }
+      if (days % 7 == 4) {
+        return 4
+      }
+      if (days % 7 == 5) {
+        return 5
+      }
+      if (days % 7 == 6) {
+        return 6
+      }
+  }
+  var n = Number(prompt())
+  var x = Number(prompt())
+  console.log(weekday(n,x))
+
+ </script>
+
+<script id="complete-number">
+function wqs(x) {
+  var s = 0
+  for (var i = 2;i < x;i++) {
+    if (x % i == 0) {
+      s = s + i
+    }
+  }
+  s = s + 1
+  if (s == x) {
+    return 'YES'
+  } else {
+    return 'NO'
+  }
+}
+var x = Number(prompt())
+console.log(wqs(x))
+
+</script>
+
+<script id="complete-numbers">
+function wqs(x) {
+  var s = 0
+  for (var i = 2;i < x;i++) {
+    if (x % i == 0) {
+      s = s + i
+    }
+  }
+  s = s + 1
+  if (s == x) {
+    return 'YES'
+  } else {
+    return 'NO'
+  }
+}
+for (var i = 2;i < 1000;i++)
+if (wqs(i) == 'YES') {
+  console.log(i)
+}
+</script>
+
+
   <script  id="ch0103/01">
     var a = Number(prompt())
     var b = Number(prompt())
@@ -1298,7 +1483,5 @@ console.log(k)
   console.log(s)
 
 </script>
-
-
 </body>
 </html>
