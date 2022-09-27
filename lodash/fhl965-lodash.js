@@ -163,6 +163,7 @@ return {
   fill,
   findIndex,
   flatten,
+  flattenDeep,
 }
 
 
