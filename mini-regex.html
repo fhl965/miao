@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini RegExp101</title>
+  <style>
+
+    .regexp101-main #regexpInput{
+    }
+    .regexp101-main #stringInput{
+      height: 200px;
+      background-color: transparent;
+    }
+    #result {
+      height: 200px;
+    }
+    #regexpInput,#stringInput,#result {
+      outline: none;
+      width: 500px;
+      padding: 0.5em;
+      border: 2px solid;
+      box-sizing: border-box;
+      border-radius:.3em;
+      margin: .3em;
+      font-size: 1.5em;
+      font-family: consolas;
+    }
+    #result strong {
+      font-weight: normal;
+      background-color: #d5ebff;
+    }
+    #result strong:nth-child(even) {
+      font-weight: normal;
+      background-color: #9fcfff;
+    }
+    #result strong:empty {
+      display: inline-block;
+      height: 1em;
+      width: 2px;
+      margin-left: -1px;
+      margin-right: -1px;
+      background-image: linear-gradient(red,red);
+    }
+    #showoff {
+      position: relative;
+    }
+    #result {
+      position: absolute;
+      top: 0;
+      left: 0;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      z-index: -1;
+    }
+    #result,#stringInput {
+      line-height: 1.5;
+      overflow: auto;
+    }
+    #regexpOptopns {
+      margin: .3em;
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="run()">显示</button>
+  <div class="regexp101-main">
+    <h1>Mini Regexp101</h1>
+    <div id="regexpOptions">
+      <label></label><input onchange="run()" id="flagGlobal" checked type="checkbox">g</label>
+      <label></label><input onchange="run()" id="flagMultiline" checked type="checkbox">m</label>
+      <label></label><input onchange="run()" id="flagIgnoreCase" type="checkbox">i</label>
+      <label></label><input onchange="run()" id="flagSticky" type="checkbox">y</label>
+      <label></label><input onchange="run()" id="flagUnicode" type="checkbox">u</label>
+      <label></label><input onchange="run()" id="flagSingleLine" type="checkbox">s</label>
+      <label></label><input onchange="run()" id="flagIndices" type="checkbox">d</label>
+      <span id="info"></span>
+    </div>
+
+    <input type="text" id="regexpInput" value = "\d+" onkeyup="run()">
+    <br>
+    <div id="showoff">
+      <textarea onscroll="同步滚动条()"  oninput="run()" name="" id="stringInput" cols="30" rows="10">foo bar baz 111 222 333</textarea>
+      <pre id="result"></pre>
+    </div>
+    <input id="replacementString" oninput="run()" type="text">
+    <pre id="substitutionResult"></pre>
+  </div>
+<script>
+  run()
+  function 同步滚动条() {
+    result.scrollTo(0,stringInput.scrollTop)
+  }
+  function run() {
+    var reStr =regexpInput.value
+    var text = stringInput.value
+    var flags = getFlags()
+    try {
+      var re = new RegExp(reStr,flags)
+
+    } catch(e) {
+      info.innerHTML = '正则表达式错误' + e
+      return
+    }
+    info.innerHTML = ''
+    var html = ''
+    var match = null
+    var lastIndex = 0
+    while (match = re.exec(text)) {
+      html += text.slice(lastIndex,match.index)
+      html += '<strong title="Pos: ${match.index}-${match.index + match[0].length}">' + match[0] + '</strong>'
+      lastIndex = re.lastIndex
+      if (!re.global) {
+        lastIndex = match.index + match[0].length
+        break
+      }
+      if (match[0].length == 0) {
+        re.lastIndex++
+      }
+    }
+    html += text.slice(lastIndex)
+    result.innerHTML = html
+    substitutionResult.innerHTML = text.replace(re,replacementString.value)
+
+  }
+  function getFlags() {
+    var result = ''
+    if(flagGlobal.checked == true){
+      result += 'g'
+    }
+    if(flagMultiline.checked == true){
+      result += 'm'
+    }
+    if(flagIgnoreCase.checked == true){
+      result += 'i'
+    }
+    if(flagSticky.checked == true){
+      result += 'y'
+    }
+    if(flagUnicode.checked == true){
+      result += 'u'
+    }
+    if(flagSingleLine.checked == true){
+      result += 's'
+    }
+    if(flagIndices.checked == true){
+      result += 'd'
+    }
+  }
+</script>
+</body>
+</html>
